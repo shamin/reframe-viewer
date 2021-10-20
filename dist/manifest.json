@@ -7,5 +7,5 @@
   "description": "Reframe Viewer",
   "author": "Shamin",
 
-  "devtools_page": "html/devtools.html"
+  "devtools_page": "./devtools.html"
 }

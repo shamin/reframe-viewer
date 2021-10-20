@@ -1,0 +1,27 @@
+{
+  "name": "reframe-viewer",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "Shamin",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.4.0",
+    "webpack": "^5.59.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

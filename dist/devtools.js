@@ -1,0 +1,1 @@
+chrome.devtools.panels.create("Reframe Viewer",null,"./panel/index.html",null);
