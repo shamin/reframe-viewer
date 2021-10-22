@@ -1,30 +1,38 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require("path")
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  entry: {
+    "background": "./src/background/index.js",
+    "panel": "./src/panel/index.js",
+    "devtools": "./src/devtools/index.js",
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: "babel-loader",
+        },
+      },
+    ],
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "src/panel.html",
-      filename: "index.html"
-    })
+    new CopyPlugin({
+      patterns: [
+        { from: "app", to: "" },
+      ],
+    }),
   ],
   output: {
-    path: __dirname + '/dist/panel',
+    path: __dirname + "/dist",
+    filename: "[name].js",
+    clean: true,
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist/panel'),
+      directory: path.join(__dirname, "dist"),
     },
     port: 9000,
   },
