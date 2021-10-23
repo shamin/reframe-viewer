@@ -1,4 +1,4 @@
-import * as constants from '../../../shared/constants'
+import * as constants from "../../../shared/constants";
 
 export const createChannel = (callback) => {
   const port = chrome?.runtime?.connect({
@@ -7,12 +7,12 @@ export const createChannel = (callback) => {
 
   port?.onMessage.addListener(function (message) {
     console.log(message);
-    callback(message)
+    callback(message);
   });
 };
 
 export const sendMessageToPage = (message) => {
   message.tabId = chrome?.devtools?.inspectedWindow.tabId;
-  message.owner = constants.PANEL_NAME
+  message.owner = constants.PANEL_NAME;
   chrome?.runtime?.sendMessage(message);
 };

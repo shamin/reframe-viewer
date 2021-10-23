@@ -5,8 +5,8 @@ import { COLORS } from "../../shared/styles";
 const tabItemStyles = ({ selected }) => css`
   color: ${selected ? COLORS.grey100 : COLORS.grey200};
   font-size: 14px;
-  padding: 4px 8px;
-  background: ${selected ? COLORS.grey900 : "transparent"};
+  padding: 4px 16px;
+  background: ${selected ? COLORS.black : "transparent"};
 `;
 
 const TabItem = ({ name, selected }) => {

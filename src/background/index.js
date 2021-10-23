@@ -1,11 +1,16 @@
 import * as constants from "../shared/constants";
-import { executeScriptFiles } from "./script";
+import { getDbEvent } from "./events";
+import { executeScriptFunc } from "./script";
 
 chrome.runtime.onConnect.addListener((port) => {
   const extensionListener = function (message, _sender, sendResponse) {
     if (message?.owner === constants.PANEL_NAME) {
       if (message.action === "initialize") {
-        executeScriptFiles(message.tabId, "messaging.js");
+        console.log("Intialize")
+      } else if (message.action === "getDb") {
+        executeScriptFunc(message.tabId, getDbEvent)
+      } else {
+        console.log("else")
       }
     } else {
       port.postMessage(message);

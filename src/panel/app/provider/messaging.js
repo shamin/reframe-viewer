@@ -1,7 +1,7 @@
-// import { sendMessageToPage } from "./channel";
+import { sendMessageToPage } from "./channel";
 
-// export const initializeMessaging = () => {
-//   sendMessageToPage({
-//     action: "initialize",
-//   });
-// };
+export const initializeMessaging = () => {
+  sendMessageToPage({
+    action: "initialize",
+  });
+};

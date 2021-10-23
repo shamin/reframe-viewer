@@ -12,13 +12,22 @@ const inputWrapperStyles = css`
 `;
 
 export const Page = () => {
-  const { db } = useApp();
+  const { db, sendMessageToPage } = useApp();
   return (
     <div>
       <div css={inputWrapperStyles}>
         <Input type="text" placeholder="Filter" />
       </div>
       <DB data={db} />
+      <button
+        onClick={() => {
+          sendMessageToPage({
+            action: "getDb",
+          });
+        }}
+      >
+        Refresh
+      </button>
     </div>
   );
 };

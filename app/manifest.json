@@ -12,5 +12,11 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["*://localhost:*/*"],
+      "js": ["content-script.js"]
+    }
+  ],
   "permissions": ["scripting"]
 }

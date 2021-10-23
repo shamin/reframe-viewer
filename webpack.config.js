@@ -6,7 +6,7 @@ module.exports = {
     "background": "./src/background/index.js",
     "panel": "./src/panel/index.js",
     "devtools": "./src/devtools/index.js",
-    "messaging": "./src/messaging/index.js",
+    "content-script": "./src/contentScript/index.js",
   },
   module: {
     rules: [
