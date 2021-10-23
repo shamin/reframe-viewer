@@ -1,4 +1,11 @@
 import React from "react";
 import ReactJson from "react-json-view";
 
-export const DB = ({ data }) => <ReactJson src={data} theme="monokai" />;
+export const DB = ({ data }) => (
+  <ReactJson
+    src={data}
+    theme="monokai"
+    displayDataTypes={false}
+    style={{ fontSize: 14 }}
+  />
+);

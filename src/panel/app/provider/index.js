@@ -6,7 +6,8 @@ import React, {
   useState,
 } from "react";
 import { createChannel, sendMessageToPage } from "./channel";
-import { initializeMessaging } from "./messaging";
+// import { initializeMessaging } from "./messaging";
+import { initializeMessaging } from "../messaging";
 
 const AppContext = createContext({});
 

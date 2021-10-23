@@ -6,8 +6,6 @@ import { Page } from './page'
 export const App = () => (
   <AppProvider>
     <Container>
-      {/* <input type="text" placeholder="type something" />
-    <DB /> */}
       <Page />
     </Container>
   </AppProvider>
