@@ -3,11 +3,11 @@ import { useApp } from "./provider";
 import { DB } from "./db";
 
 export const Page = () => {
-  const { sendMessageToPage } = useApp();
+  const { db } = useApp();
   return (
     <div>
       <input type="text" placeholder="type something" />
-      <DB />
+      <DB data={db} />
     </div>
   );
 };

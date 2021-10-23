@@ -1,12 +1,13 @@
 import * as constants from '../../../shared/constants'
 
-export const createChannel = () => {
+export const createChannel = (callback) => {
   const port = chrome.runtime.connect({
     name: constants.APP_NAME,
   });
 
   port.onMessage.addListener(function (message) {
     console.log(message);
+    callback(message)
   });
 };
 
