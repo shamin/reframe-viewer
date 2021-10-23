@@ -1,19 +1,13 @@
 import React from "react";
 import { useApp } from "./provider";
+import { DB } from "./db";
 
 export const Page = () => {
   const { sendMessageToPage } = useApp();
   return (
     <div>
-      <button
-        onClick={() => {
-          sendMessageToPage({
-            action: "initialize",
-          });
-        }}
-      >
-        Initialize
-      </button>
+      <input type="text" placeholder="type something" />
+      <DB />
     </div>
   );
 };

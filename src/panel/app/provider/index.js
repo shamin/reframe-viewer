@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo } from "react";
 import { createChannel, sendMessageToPage } from "./channel";
+import { initializeMessaging } from "./messaging";
 
 const AppContext = createContext({});
 
@@ -8,6 +9,7 @@ export const useApp = () => useContext(AppContext);
 const AppProvider = ({ children }) => {
   useEffect(() => {
     createChannel();
+    initializeMessaging();
   }, []);
 
   const value = useMemo(
