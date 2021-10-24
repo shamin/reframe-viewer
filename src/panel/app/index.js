@@ -8,6 +8,7 @@ import {
   TabView,
 } from "../../shared/components/tab";
 import { StateViewer } from "./stateViewer";
+import { Events } from "./events";
 
 export const App = () => (
   <AppProvider>
@@ -32,7 +33,9 @@ export const App = () => (
             <TabView id="state" selected={selected}>
               <StateViewer />
             </TabView>
-            <TabView id="events" selected={selected} />
+            <TabView id="events" selected={selected}>
+              <Events />
+            </TabView>
           </>
         )}
       </TabsWrapper>

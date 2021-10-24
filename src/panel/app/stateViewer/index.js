@@ -4,7 +4,6 @@ import { useApp } from "../provider";
 import { DB } from "./db";
 import { Input } from "../../../shared/components/input";
 import { COLORS } from "../../../shared/styles";
-import { handleReframeEvent } from "../events";
 import { useState } from "react";
 
 const inputWrapperStyles = css`
@@ -15,6 +14,7 @@ const inputWrapperStyles = css`
 
 export const StateViewer = () => {
   const [filter, setFilter] = useState("");
+  const [filterApplied, setFilterApplied] = useState("")
   const { db, sendMessageToPage } = useApp();
   return (
     <div>
@@ -27,11 +27,11 @@ export const StateViewer = () => {
             setFilter(e.target.value);
           }}
           onEnterPress={() => {
-            handleReframeEvent(filter);
+            setFilterApplied(filter);
           }}
         />
       </div>
-      <DB data={db} />
+      <DB data={db} filter={filterApplied} />
       <button
         onClick={() => {
           sendMessageToPage({
