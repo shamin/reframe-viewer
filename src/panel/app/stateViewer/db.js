@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import ReactJson from "react-json-view";
-import { get } from "lodash";
+import get from "lodash/get";
 
 const wrapperStyles = css`
   padding: 4px 8px;

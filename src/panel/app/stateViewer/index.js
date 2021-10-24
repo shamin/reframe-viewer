@@ -14,7 +14,7 @@ const inputWrapperStyles = css`
 
 export const StateViewer = () => {
   const [filter, setFilter] = useState("");
-  const [filterApplied, setFilterApplied] = useState("")
+  const [filterApplied, setFilterApplied] = useState("");
   const { db, sendMessageToPage } = useApp();
   return (
     <div>
