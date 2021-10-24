@@ -1,9 +1,13 @@
 import React from "react";
 import { Container } from "./container";
 import AppProvider from "./provider";
-import { Page } from "./page";
-import { Tabs } from "./tabs";
-import { TabsWrapper, TabItem, TabHeader, TabView } from "../../shared/components/tab";
+import {
+  TabsWrapper,
+  TabItem,
+  TabHeader,
+  TabView,
+} from "../../shared/components/tab";
+import { StateViewer } from "./stateViewer";
 
 export const App = () => (
   <AppProvider>
@@ -26,7 +30,7 @@ export const App = () => (
               />
             </TabHeader>
             <TabView id="state" selected={selected}>
-              <Page />
+              <StateViewer />
             </TabView>
             <TabView id="events" selected={selected} />
           </>

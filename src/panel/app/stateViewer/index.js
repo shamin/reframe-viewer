@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import { useApp } from "./provider";
+import { useApp } from "../provider";
 import { DB } from "./db";
-import { Input } from "../../shared/components/input";
-import { COLORS } from "../../shared/styles";
-import { handleReframeEvent } from "./events";
+import { Input } from "../../../shared/components/input";
+import { COLORS } from "../../../shared/styles";
+import { handleReframeEvent } from "../events";
 import { useState } from "react";
 
 const inputWrapperStyles = css`
@@ -13,7 +13,7 @@ const inputWrapperStyles = css`
   border-bottom: 1px solid ${COLORS.grey500};
 `;
 
-export const Page = () => {
+export const StateViewer = () => {
   const [filter, setFilter] = useState("");
   const { db, sendMessageToPage } = useApp();
   return (
