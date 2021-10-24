@@ -5,9 +5,10 @@ export const executeScriptFiles = (tabId, ...fileNames) => {
   });
 };
 
-export const executeScriptFunc = (tabId, func) => {
+export const executeScriptFunc = (tabId, func, args) => {
   chrome.scripting.executeScript({
     target: { tabId },
     func,
+    args,
   });
 };

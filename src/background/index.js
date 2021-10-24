@@ -1,16 +1,20 @@
 import * as constants from "../shared/constants";
-import { getDbEvent } from "./events";
+import { getDbEvent, handleReframeEvent } from "./events";
 import { executeScriptFunc } from "./script";
 
 chrome.runtime.onConnect.addListener((port) => {
   const extensionListener = function (message, _sender, sendResponse) {
     if (message?.owner === constants.PANEL_NAME) {
       if (message.action === "initialize") {
-        console.log("Intialize")
+        console.log("Intialize");
       } else if (message.action === "getDb") {
-        executeScriptFunc(message.tabId, getDbEvent)
-      } else {
-        console.log("else")
+        executeScriptFunc(message.tabId, getDbEvent);
+      } 
+      else if (message.action === "handleReframeEvent") {
+        executeScriptFunc(message.tabId, handleReframeEvent, [message.reframeEvent]);
+      }
+       else {
+        console.log("else");
       }
     } else {
       port.postMessage(message);

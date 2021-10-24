@@ -15,11 +15,20 @@ const inputStyles = css`
   &:hover {
     border: 1px solid ${COLORS.grey500};
   }
-  &:active, &:focus {
+  &:active,
+  &:focus {
     border: 1px solid ${COLORS.activeBlue};
   }
 `;
 
-export const Input = (props) => {
-  return <input css={inputStyles} {...props} />;
+export const Input = ({ onEnterPress, ...remainingProps }) => {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      onEnterPress?.();
+    }
+  };
+
+  return (
+    <input onKeyPress={handleKeyPress} css={inputStyles} {...remainingProps} />
+  );
 };

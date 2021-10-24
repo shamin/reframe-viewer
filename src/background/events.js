@@ -1,28 +1,18 @@
-const EVENT_NAME = "reframe-viewer-event-webpage";
-
-const sendEvent = (detail) => {
-  var event = new CustomEvent(EVENT_NAME, {
-    detail,
+export const handleReframeEvent = (reframeEvent) => {
+  const event = new CustomEvent("reframe-viewer-event-webpage", {
+    detail: {
+      "reframe-event": reframeEvent,
+      event: "handle-event",
+    },
   });
   window.dispatchEvent(event);
 };
 
-export const handleReframeEvent = (reframeEvent) => {
-  sendEvent({
-    "reframe-event": reframeEvent,
-    event: "handle-event",
-  });
-};
-
 export const getDbEvent = () => {
-  sendEvent({
-    event: "get-db",
+  const event = new CustomEvent("reframe-viewer-event-webpage", {
+    detail: {
+      event: "get-db",
+    },
   });
-};
-
-export const initializeListener = () => {
-  window.addEventListener("reframe-viewer-event", ({ detail }) => {
-    chrome.runtime.sendMessage(message, function (message) {});
-  });
-  return
+  window.dispatchEvent(event);
 };
