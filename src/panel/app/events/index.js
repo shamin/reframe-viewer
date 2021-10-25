@@ -5,6 +5,8 @@ import { COLORS } from "../../../shared/styles";
 import { useState } from "react";
 import { sendMessageToPage } from "../provider/channel";
 import { useApp } from "../provider";
+import { events } from "./data";
+import { Table } from "./table";
 
 const inputWrapperStyles = css`
   background: ${COLORS.grey700};
@@ -19,10 +21,9 @@ const handleReframeEvent = (event) => {
   });
 };
 
-
 export const Events = () => {
   const [event, setEvent] = useState("");
-  const { events } = useApp()
+  // const { events } = useApp()
   return (
     <div>
       <div css={inputWrapperStyles}>
@@ -35,13 +36,11 @@ export const Events = () => {
           }}
           onEnterPress={() => {
             handleReframeEvent(event);
-            setEvent("")
+            setEvent("");
           }}
         />
       </div>
-      <div>
-        {JSON.stringify(events)}
-      </div>
+      <Table events={events} />
     </div>
   );
 };
