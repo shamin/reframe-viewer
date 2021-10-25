@@ -1,12 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import { createChannel, sendMessageToPage } from "./channel";
-// import { initializeMessaging } from "./messaging";
+import React, { createContext, useContext, useEffect, useMemo } from "react";
+import { sendMessageToPage, useChannel } from "./channel";
 import { initializeMessaging } from "./messaging";
 
 const AppContext = createContext({});
@@ -14,12 +7,9 @@ const AppContext = createContext({});
 export const useApp = () => useContext(AppContext);
 
 const AppProvider = ({ children }) => {
-  const [db, setDb] = useState({});
+  const { db, events } = useChannel();
 
   useEffect(() => {
-    createChannel((db) => {
-      setDb(db);
-    });
     initializeMessaging();
   }, []);
 
@@ -27,8 +17,9 @@ const AppProvider = ({ children }) => {
     () => ({
       sendMessageToPage,
       db,
+      events,
     }),
-    [sendMessageToPage, db]
+    [sendMessageToPage, db, events]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

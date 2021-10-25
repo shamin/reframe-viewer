@@ -4,6 +4,7 @@ import { Input } from "../../../shared/components/input";
 import { COLORS } from "../../../shared/styles";
 import { useState } from "react";
 import { sendMessageToPage } from "../provider/channel";
+import { useApp } from "../provider";
 
 const inputWrapperStyles = css`
   background: ${COLORS.grey700};
@@ -21,6 +22,7 @@ const handleReframeEvent = (event) => {
 
 export const Events = () => {
   const [event, setEvent] = useState("");
+  const { events } = useApp()
   return (
     <div>
       <div css={inputWrapperStyles}>
@@ -36,6 +38,9 @@ export const Events = () => {
             setEvent("")
           }}
         />
+      </div>
+      <div>
+        {JSON.stringify(events)}
       </div>
     </div>
   );
