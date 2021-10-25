@@ -5,7 +5,6 @@ import { COLORS } from "../../../shared/styles";
 import { useState } from "react";
 import { sendMessageToPage } from "../provider/channel";
 import { useApp } from "../provider";
-import { events } from "./data";
 import { Table } from "./table";
 
 const inputWrapperStyles = css`
@@ -23,7 +22,7 @@ const handleReframeEvent = (event) => {
 
 export const Events = () => {
   const [event, setEvent] = useState("");
-  // const { events } = useApp()
+  const { events } = useApp();
   return (
     <div>
       <div css={inputWrapperStyles}>
@@ -40,7 +39,7 @@ export const Events = () => {
           }}
         />
       </div>
-      <Table events={events} />
+      <Table events={[...events].sort(() => -1)} />
     </div>
   );
 };

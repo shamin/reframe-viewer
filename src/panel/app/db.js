@@ -7,7 +7,7 @@ const wrapperStyles = css`
   padding: 4px 8px;
 `;
 
-export const DB = ({ data, filter = "" }) => {
+export const DB = ({ data, filter = "", rootName="db" }) => {
   const filterKeys = filter.replaceAll(":", "").split(" ");
   const src =
     filter.length > 0
@@ -17,7 +17,7 @@ export const DB = ({ data, filter = "" }) => {
     <div css={wrapperStyles}>
       <ReactJson
         src={src}
-        name="db"
+        name={rootName}
         theme="google"
         displayDataTypes={false}
         style={{ fontSize: 14 }}
