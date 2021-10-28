@@ -79,6 +79,7 @@ const detailViewStyles = css`
       .detail-view__item-header {
         font-weight: 600;
         padding-bottom: 4px;
+        cursor: pointer;
       }
       .item__field {
         display: flex;
@@ -131,7 +132,7 @@ export const Table = ({ events }) => {
               <div className="table__cell">{e.event}</div>
               {selectedEvent === null && (
                 <div className="table__cell">
-                  {new Date(e.timestamp).toString()}
+                  {(new Date(e.timestamp)).toLocaleString()}
                 </div>
               )}
             </div>

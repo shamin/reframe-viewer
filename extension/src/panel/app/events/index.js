@@ -30,9 +30,11 @@ const cancelButtonStyles = css`
 
 const getEventsToShow = (events, filterEvent) => {
   if (filterEvent.length === 0) {
-    return [...events].sort(() => -1);
+    return [...events].sort((e) => -1 * e.timestamp);
   } else {
-    return [...events].filter((e) => e.event.includes(filterEvent));
+    return [...events]
+      .filter((e) => e.event.includes(filterEvent))
+      .sort((e) => -1 * e.timestamp);
   }
 };
 
