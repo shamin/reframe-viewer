@@ -6,6 +6,9 @@ import { Input } from "../../../shared/components/input";
 import { COLORS } from "../../../shared/styles";
 import { useState } from "react";
 import { RefreshIcon } from "../../../shared/icons/refresh";
+import { CollapseIcon } from "../../../shared/icons/collapse";
+import { ExpandIcon } from "../../../shared/icons/expand";
+import { useCollapsed } from "../hooks/useCollapsed";
 
 const headerStyles = css`
   background: ${COLORS.grey700};
@@ -14,10 +17,10 @@ const headerStyles = css`
   display: flex;
 `;
 
-const refreshButtonStyles = css`
+const headerButtonStyles = ({ disabled } = {}) => css`
   background: none;
   border: none;
-  cursor: pointer;
+  cursor: ${disabled ? "not-allowed" : "pointer"};
   padding: 0 4px;
   margin: 0 4px;
   border-radius: 4px;
@@ -36,9 +39,32 @@ export const StateViewer = () => {
   const [filter, setFilter] = useState("");
   const [filterApplied, setFilterApplied] = useState("");
   const { db, sendMessageToPage } = useApp();
+  const { collapsed, onCollapse, onExpand, collapseDisabled, expandDisabled } =
+    useCollapsed(1);
+
   return (
     <div css={stateViewerStyles}>
       <div css={headerStyles}>
+        <button
+          css={headerButtonStyles({ disabled: expandDisabled })}
+          onClick={onExpand}
+          disabled={expandDisabled}
+        >
+          <ExpandIcon
+            color={expandDisabled ? COLORS.grey200 : COLORS.grey100}
+            size={16}
+          />
+        </button>
+        <button
+          css={headerButtonStyles({ disabled: collapseDisabled })}
+          onClick={onCollapse}
+          disabled={collapseDisabled}
+        >
+          <CollapseIcon
+            color={collapseDisabled ? COLORS.grey200 : COLORS.grey100}
+            size={16}
+          />
+        </button>
         <Input
           type="text"
           placeholder="Filter"
@@ -51,7 +77,7 @@ export const StateViewer = () => {
           }}
         />
         <button
-          css={refreshButtonStyles}
+          css={headerButtonStyles()}
           onClick={() => {
             sendMessageToPage({
               action: "getDb",
@@ -61,7 +87,7 @@ export const StateViewer = () => {
           <RefreshIcon color={COLORS.grey100} size={16} />
         </button>
       </div>
-      <DB data={db} filter={filterApplied} />
+      <DB data={db} filter={filterApplied} collapsed={collapsed} />
     </div>
   );
 };
