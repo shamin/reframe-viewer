@@ -10,6 +10,8 @@ const tableStyles = css`
   flex: 1;
   color: ${COLORS.grey100};
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
   .table__header-row {
     display: flex;
     .table__cell {
@@ -20,6 +22,7 @@ const tableStyles = css`
     }
   }
   .table__body {
+    flex: 1;
     overflow: scroll;
     .table__row {
       display: flex;
@@ -76,6 +79,7 @@ const detailViewStyles = css`
       .detail-view__item-header {
         font-weight: 600;
         padding-bottom: 4px;
+        cursor: pointer;
       }
       .item__field {
         display: flex;
@@ -106,6 +110,7 @@ export const Table = ({ events }) => {
     <div
       css={css`
         display: flex;
+        height: 100%;
       `}
     >
       <div css={tableStyles}>
@@ -127,14 +132,14 @@ export const Table = ({ events }) => {
               <div className="table__cell">{e.event}</div>
               {selectedEvent === null && (
                 <div className="table__cell">
-                  {new Date(e.timestamp).toString()}
+                  {(new Date(e.timestamp)).toLocaleString()}
                 </div>
               )}
             </div>
           ))}
         </div>
       </div>
-      {selectedEvent !== null && (
+      {selectedEventDetails && (
         <div css={detailViewStyles}>
           <div className="detail-view__header">
             <button

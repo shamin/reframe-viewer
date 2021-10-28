@@ -7,7 +7,7 @@ const AppContext = createContext({});
 export const useApp = () => useContext(AppContext);
 
 const AppProvider = ({ children }) => {
-  const { db, events } = useChannel();
+  const { db, events, clearEvents } = useChannel();
 
   useEffect(() => {
     initializeMessaging();
@@ -18,8 +18,9 @@ const AppProvider = ({ children }) => {
       sendMessageToPage,
       db,
       events,
+      clearEvents,
     }),
-    [sendMessageToPage, db, events]
+    [sendMessageToPage, db, events, clearEvents]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

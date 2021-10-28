@@ -35,6 +35,10 @@ export const useChannel = () => {
     [db, events]
   );
 
+  const clearEvents = () => {
+    setEvents([]);
+  };
+
   useEffect(() => {
     port?.onMessage.addListener(onMessageListener);
     return () => {
@@ -45,5 +49,6 @@ export const useChannel = () => {
   return {
     db,
     events,
+    clearEvents,
   };
 };

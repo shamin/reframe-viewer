@@ -5,9 +5,10 @@ import get from "lodash/get";
 
 const wrapperStyles = css`
   padding: 4px 8px;
+  overflow: scroll;
 `;
 
-export const DB = ({ data, filter = "", rootName="db" }) => {
+export const DB = ({ data, filter = "", rootName = "db", collapsed = false }) => {
   const filterKeys = filter.replaceAll(":", "").split(" ");
   const src =
     filter.length > 0
@@ -21,6 +22,7 @@ export const DB = ({ data, filter = "", rootName="db" }) => {
         theme="google"
         displayDataTypes={false}
         style={{ fontSize: 14 }}
+        collapsed={collapsed}
       />
     </div>
   );

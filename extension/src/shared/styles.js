@@ -8,5 +8,6 @@ export const COLORS = {
   grey200: "#9BA0A6",
   grey100: "#EAEAEA",
   activeBlue: "#346397",
-  hoverBlue: "#1B2436"
+  hoverBlue: "#1B2436",
+  activeRed: "#f28b83",
 };
