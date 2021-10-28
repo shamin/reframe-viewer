@@ -10,6 +10,8 @@ const tableStyles = css`
   flex: 1;
   color: ${COLORS.grey100};
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
   .table__header-row {
     display: flex;
     .table__cell {
@@ -20,6 +22,7 @@ const tableStyles = css`
     }
   }
   .table__body {
+    flex: 1;
     overflow: scroll;
     .table__row {
       display: flex;
@@ -106,6 +109,7 @@ export const Table = ({ events }) => {
     <div
       css={css`
         display: flex;
+        height: 100%;
       `}
     >
       <div css={tableStyles}>
@@ -134,7 +138,7 @@ export const Table = ({ events }) => {
           ))}
         </div>
       </div>
-      {selectedEvent !== null && (
+      {selectedEventDetails && (
         <div css={detailViewStyles}>
           <div className="detail-view__header">
             <button

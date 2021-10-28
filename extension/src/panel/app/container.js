@@ -12,6 +12,9 @@ export const Container = ({ children }) => (
           margin: 0;
           font-family: "Lato", sans-serif;
         }
+        #app {
+          height: 100%;
+        }
       `}
     />
     {children}

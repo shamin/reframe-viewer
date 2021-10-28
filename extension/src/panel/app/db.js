@@ -5,6 +5,7 @@ import get from "lodash/get";
 
 const wrapperStyles = css`
   padding: 4px 8px;
+  overflow: scroll;
 `;
 
 export const DB = ({ data, filter = "", rootName="db" }) => {

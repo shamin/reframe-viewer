@@ -15,9 +15,15 @@ export const TabHeader = ({ children }) => (
   <div css={tabHeaderStyles}>{children}</div>
 );
 
+const tabWrapperStyles = css`
+  display: flex;
+  flex-direction: column;
+  height: 100%; ;
+`;
+
 export const TabsWrapper = ({ defaultSelected, children }) => {
   const [selected, onSelect] = useState(defaultSelected);
-  return <div>{children({ selected, onSelect })}</div>;
+  return <div css={tabWrapperStyles}>{children({ selected, onSelect })}</div>;
 };
 
 const tabItemStyles = ({ selected }) => css`
@@ -38,13 +44,12 @@ export const TabItem = ({ id, name, selected, onSelect }) => (
   </button>
 );
 
+const tabViewStyles = ({ selected }) => css`
+  flex: 1;
+  overflow: hidden;
+`;
+
 export const TabView = ({ id, selected, children }) => {
   const isSelected = id === selected;
-  return (
-    isSelected && (
-      <div>
-        {children}
-      </div>
-    )
-  );
+  return isSelected && <div css={tabViewStyles}>{children}</div>;
 };

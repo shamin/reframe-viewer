@@ -9,13 +9,6 @@ import { Table } from "./table";
 import { CancelIcon } from "../../../shared/icons/clear";
 import { FilterIcon } from "../../../shared/icons/filter";
 
-const rowStyles = css`
-  display: flex;
-  background: ${COLORS.grey700};
-  padding: 4px;
-  border-bottom: 1px solid ${COLORS.grey500};
-`;
-
 const handleReframeEvent = (event) => {
   sendMessageToPage({
     action: "handleReframeEvent",
@@ -43,6 +36,18 @@ const getEventsToShow = (events, filterEvent) => {
   }
 };
 
+const eventsStyles = css`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .events__row {
+    display: flex;
+    background: ${COLORS.grey700};
+    padding: 4px;
+    border-bottom: 1px solid ${COLORS.grey500};
+  }
+`;
+
 export const Events = () => {
   const [event, setEvent] = useState("");
   const [filterView, setFilterView] = useState(false);
@@ -54,8 +59,8 @@ export const Events = () => {
   };
 
   return (
-    <div>
-      <div css={rowStyles}>
+    <div css={eventsStyles}>
+      <div className="events__row">
         <Input
           type="text"
           placeholder="Dispatch Event eg: [:event {:data data}]"
@@ -89,7 +94,7 @@ export const Events = () => {
         </button>
       </div>
       {filterView && (
-        <div css={rowStyles}>
+        <div className="events__row">
           <Input
             type="text"
             placeholder="Filter"

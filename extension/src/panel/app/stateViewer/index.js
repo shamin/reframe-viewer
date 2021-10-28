@@ -26,12 +26,18 @@ const refreshButtonStyles = css`
   }
 `;
 
+const stateViewerStyles = css`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
 export const StateViewer = () => {
   const [filter, setFilter] = useState("");
   const [filterApplied, setFilterApplied] = useState("");
   const { db, sendMessageToPage } = useApp();
   return (
-    <div>
+    <div css={stateViewerStyles}>
       <div css={headerStyles}>
         <Input
           type="text"
